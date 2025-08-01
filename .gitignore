@@ -3,3 +3,4 @@
 *.wav
 *.txt
 /save_model_location
+/tts_models
