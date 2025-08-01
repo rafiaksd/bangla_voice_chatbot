@@ -1,6 +1,9 @@
 from pydub import AudioSegment
 import nemo.collections.asr as nemo_asr
+from nemo.utils import logging as nemo_logging
 import os, time
+
+nemo_logging.setLevel("ERROR")
 
 def get_time_lapsed(start_time, emojis="⏰⏱️"):
     now_time = time.time()
@@ -10,7 +13,7 @@ def get_time_lapsed(start_time, emojis="⏰⏱️"):
 
 start_time = time.time()
 
-auido_file = "testbangla.mp3"
+auido_file = "mic_input_dynamic.wav"
 audio_converted = auido_file.split(".")[0] + ".wav"
 
 # Convert to mono WAV

@@ -1,2 +1,5 @@
 *.mp3
 *.mp4
+*.wav
+*.txt
+/save_model_location
