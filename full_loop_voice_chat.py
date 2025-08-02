@@ -76,9 +76,9 @@ def transcribe(audio_path: str) -> str:
     print("🗑️ Cleaned temporary audio...")
     return transcription_text
 
-def play_audio_with_stop(file_path):
+def play_audio_with_stop(audio_path):
     pygame.mixer.init()
-    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.load(audio_path)
     pygame.mixer.music.play()
 
     def wait_for_enter():
@@ -104,6 +104,7 @@ def speak(text: str):
 # MAIN LOOP
 with open("current_chatting.txt", "w", encoding="utf-8") as file:
     file.write("")
+    
 while True:
     try:
         print("\n🔁 Ready for next interaction (press Ctrl+C to exit)")
@@ -122,7 +123,6 @@ while True:
         with open("current_chatting.txt", "a", encoding="utf-8") as file:
           file.write("  -- " + llm_response + "\n\n")
         speak(llm_response)
-
 
     except KeyboardInterrupt:
         print("\n👋 Exiting voice assistant...")
