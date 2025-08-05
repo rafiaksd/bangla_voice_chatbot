@@ -10,8 +10,7 @@ from ollama import chat
 from banglatts import BanglaTTS
 import pygame
 
-# CONFIG
-LLM_MODEL = "gemma3:4b"  # or "gemma3:4b-it-qat"
+LLM_MODEL = "gemma3:4b" 
 asr_model = nemo_asr.models.ASRModel.from_pretrained("hishab/titu_stt_bn_fastconformer")
 print("✅✅ Loaded ASR model and LLM")
 
