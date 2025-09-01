@@ -10,7 +10,7 @@ from ollama import chat
 from banglatts import BanglaTTS
 import pygame
 
-LLM_MODEL = "gemma3:4b"
+LLM_MODEL = "gemma3:1b"
 asr_model = nemo_asr.models.ASRModel.from_pretrained("hishab/titu_stt_bn_fastconformer")
 print(f"✅✅ Loaded ASR model and LLM 🧠 {LLM_MODEL}")
 
@@ -123,7 +123,7 @@ while True:
         get_time_lapsed(start_time)
 
         with open("current_chatting.txt", "a", encoding="utf-8") as file:
-          file.write("  -- " + llm_response + "\n\n")
+          file.write("  -- " + llm_response + "\n\n===================\n\n")
         speak(llm_response)
 
     except KeyboardInterrupt:
