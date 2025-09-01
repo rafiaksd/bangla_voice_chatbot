@@ -10,9 +10,9 @@ from ollama import chat
 from banglatts import BanglaTTS
 import pygame
 
-LLM_MODEL = "gemma3:4b" 
+LLM_MODEL = "gemma3:1b"
 asr_model = nemo_asr.models.ASRModel.from_pretrained("hishab/titu_stt_bn_fastconformer")
-print("✅✅ Loaded ASR model and LLM")
+print(f"✅✅ Loaded ASR model and LLM 🧠 {LLM_MODEL}")
 
 tts = BanglaTTS(save_location="save_model_location")
 
@@ -61,14 +61,17 @@ def record_audio(output_filename="mic_input_dynamic.wav", sample_rate=16000, cha
     print(f"✅ Saved recording to {output_filename}")
     return output_filename
 
-def transcribe(audio_path: str) -> str:
+def transcribe(audio_path: str):
     #converted_path = audio_path.split(".")[0] + "_converted.wav"
     #audio = AudioSegment.from_file(audio_path)
     #audio = audio.set_channels(1)
     #audio.export(converted_path, format="wav")
     print("📜📜 Started transcribing...")
+    
+    # The fix is on this line: asr_model.transcribe returns a list of strings.
+    # We just need to access the first item directly.
     transcriptions = asr_model.transcribe([audio_path])
-    transcription_text = transcriptions[0].text
+    transcription_text = transcriptions[0]
 
     print(transcription_text)
     #os.remove(converted_path)
